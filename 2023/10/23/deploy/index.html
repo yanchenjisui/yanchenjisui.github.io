@@ -225,7 +225,7 @@
 <li>首先来到&#x2F;root路径下，创建一个叫.ssh的文件夹：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir .ssh</span><br></pre></td></tr></table></figure></li>
 <li>再cd到这个文件夹下面创建一个叫authorized_keys的文件：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch authorized_keys</span><br></pre></td></tr></table></figure></li>
 <li>然后nano编辑这个文件：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano authorized_keys</span><br></pre></td></tr></table></figure></li>
-<li>现在回到我们的主机，找到这个文件：”C:\Users\用户名\.ssh\id_rsa.pub”，用记事本打开并复制里面的内容，然后回到服务器的终端中ctrl+v完成粘贴（shift+Insert也行），ctrl+o保存，回车确认，ctrl+x退出nano编辑，这样就完成了免密登录。<br>![[.&#x2F;img&#x2F;Pasted image 20231019184833.png]</li>
+<li>现在回到我们的主机，找到这个文件：”C:\Users\用户名\.ssh\id_rsa.pub”，用记事本打开并复制里面的内容，然后回到服务器的终端中ctrl+v完成粘贴（shift+Insert也行），ctrl+o保存，回车确认，ctrl+x退出nano编辑，这样就完成了免密登录。<br>![[.&#x2F;img&#x2F;Pasted image 20231019184833.png]]</li>
 </ul>
 <h2 id="编程环境配置"><a href="#编程环境配置" class="headerlink" title="编程环境配置"></a>编程环境配置</h2><h4 id="go环境配置"><a href="#go环境配置" class="headerlink" title="go环境配置"></a>go环境配置</h4><p>首先需要在本机上去golang的官网下载linux的安装包。<br>Golang的官网下载地址：<a target="_blank" rel="noopener" href="https://golang.org/dl/">https://golang.org/dl/</a><br>下载完成后通过vscode拖到服务器的&#x2F;root目录下并解压到&#x2F;usr&#x2F;local目录下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local</span><br><span class="line">tar -xzf /root/go1.21.3.linux-amd64.tar.gz</span><br></pre></td></tr></table></figure>
@@ -254,16 +254,20 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install python3.10-venv</span><br></pre></td></tr></table></figure>
 <p>venv基本命令：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 创建名为BASE的虚拟环境</span><br><span class="line">python -m venv BASE</span><br><span class="line"># 启动虚拟环境BASE</span><br><span class="line">source /root/VENV/BASE/bin/activate</span><br><span class="line"># 退出当前虚拟环境</span><br><span class="line">deactivate</span><br></pre></td></tr></table></figure>
+
 <h4 id="C-C-环境配置"><a href="#C-C-环境配置" class="headerlink" title="C&#x2F;C++环境配置"></a>C&#x2F;C++环境配置</h4><p>这个简单得一批，运行下面的命令就好：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install gcc</span><br><span class="line">sudo apt-get install g++</span><br><span class="line">sudo apt-get install gdb // </span><br></pre></td></tr></table></figure>
 <p>回到工作目录&#x2F;root&#x2F;workspace&#x2F;hello，编写如下hello.cpp的C++程序：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()&#123;</span><br><span class="line">    cout&lt;&lt;&quot;hello world&quot;&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>然后运行hello.cpp：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 如果是.c文件就用 gcc</span><br><span class="line">g++ -o hello hello.cpp</span><br><span class="line">./hello</span><br></pre></td></tr></table></figure>
+
+
 <h2 id="Docker配置"><a href="#Docker配置" class="headerlink" title="Docker配置"></a>Docker配置</h2><h4 id="Docker的初始化"><a href="#Docker的初始化" class="headerlink" title="Docker的初始化"></a>Docker的初始化</h4><p>安装Docker:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://test.docker.com -o test-docker.sh</span><br><span class="line">sudo sh test-docker.sh</span><br></pre></td></tr></table></figure>
 <p>Docker的基本命令：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># 启动Docker:</span><br><span class="line">systemctl start docker</span><br><span class="line"></span><br><span class="line"># 查看Docker的状态</span><br><span class="line">systemctl status docker</span><br><span class="line"></span><br><span class="line"># 显示正在运行的容器</span><br><span class="line">docker ps</span><br><span class="line"></span><br><span class="line"># 显示所有容器</span><br><span class="line">docker ps -a</span><br><span class="line"></span><br><span class="line"># 运行容器</span><br><span class="line">docker start &lt;container_id&gt;/&lt;container_name&gt;</span><br><span class="line"></span><br><span class="line"># 停止容器</span><br><span class="line">docker stop &lt;container_id&gt;/&lt;container_name&gt;</span><br></pre></td></tr></table></figure>
+
 <h4 id="Docker中部署mysql"><a href="#Docker中部署mysql" class="headerlink" title="Docker中部署mysql"></a>Docker中部署mysql</h4><p>拉取 MySQL 镜像:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull mysql:latest</span><br></pre></td></tr></table></figure>
 <p>查看本地镜像，是否已安装了mysql：</p>
@@ -276,6 +280,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install mysql-client</span><br></pre></td></tr></table></figure>
 <p>登录mysql：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -h 127.0.0.1 -P 3306 -u root -p</span><br></pre></td></tr></table></figure>
+
 <h2 id="Hexo部署"><a href="#Hexo部署" class="headerlink" title="Hexo部署"></a>Hexo部署</h2><h4 id="Hexo搭建-部署到github"><a href="#Hexo搭建-部署到github" class="headerlink" title="Hexo搭建&amp;部署到github"></a>Hexo搭建&amp;部署到github</h4><p>安装git:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install git</span><br></pre></td></tr></table></figure>
 <p>Hexo是基于nodeJS编写的，所以需要安装一下nodeJs和里面的npm工具:</p>
@@ -343,6 +348,7 @@
 </ul>
 <h4 id="关于磁盘空间"><a href="#关于磁盘空间" class="headerlink" title="关于磁盘空间"></a>关于磁盘空间</h4><p>某些傻逼产商不提供磁盘空间的使用情况图，得自己去命令行里面看：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 显示本地文件系统的磁盘使用情况</span><br><span class="line">df -hl</span><br><span class="line"></span><br><span class="line"># 查看当前目录下的各文件及文件夹占用大小</span><br><span class="line">du -sh *</span><br></pre></td></tr></table></figure>
+
 <h4 id="关于mysql登录"><a href="#关于mysql登录" class="headerlink" title="关于mysql登录"></a>关于mysql登录</h4><p>每次登录mysql都要输入很长一串：mysql -h 127.0.0.1 -P 3306 -u root -p，很他妈麻烦<br>在这里解决一下这个问题，用mysql-login代替上面那一长串<br>编辑shell配置文件：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano ~/.bashrc</span><br></pre></td></tr></table></figure>
 <p>在配置文件中添加别名。在文件的末尾添加以下行：</p>
@@ -373,6 +379,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm use 21.0.0</span><br></pre></td></tr></table></figure>
 <p>验证 Node.js 版本是否已升级：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
+
 <h4 id="关于ssh连接"><a href="#关于ssh连接" class="headerlink" title="关于ssh连接"></a>关于ssh连接</h4><p>有的时候重装了系统之后再次连接服务器会出现无法连接的情况。<br>解决方法：<br>到这个路径下：C:\Users\用户名\.ssh<br>找到文件known_hosts，里面的内容大概是这样的：<br>![[.&#x2F;img&#x2F;Pasted image 20231020112830.png]]<br>找到要连接的服务器的地址，把与它相关的东西都删了就行，之后重新连接就能连接上了。</p>
 <h4 id="关于hexo再部署"><a href="#关于hexo再部署" class="headerlink" title="关于hexo再部署"></a>关于hexo再部署</h4><p>hexo有个毛病，就是当你更新完你的post之后，想要进行在部署时，有概率会触发以下错误：<br>![[.&#x2F;img&#x2F;Pasted image 20231020171703.png]]<br>解决方法：</p>
 <ul>
